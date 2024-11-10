@@ -16,6 +16,7 @@ export const userLogin = async (user: LoginDto) => {
 
 export const userRegister = async (user: RegisterDto) => {
   try {
+    if(!user.password) throw new Error("Missing user data, [password] is require")
     const hashP = await hash(user.password, 10);
     user.password = hashP;
     const newUser = new User(user);
