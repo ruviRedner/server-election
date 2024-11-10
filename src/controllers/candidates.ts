@@ -1,5 +1,7 @@
 import { Router } from "express";
 
-const router = Router()
+const router = Router();
 
-export default router
+router.post("/", () => {});
+
+export default router;
