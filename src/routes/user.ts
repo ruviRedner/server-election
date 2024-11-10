@@ -5,10 +5,10 @@ import { userLogin, userRegister } from "../services/user";
 export const login = async (
   req: Request<LoginDto>,
   res: Response
-): Promise<void> => {
+) => {
   try {
     const result = await userLogin(req.body);
-    res.status(200).json({result});
+    res.status(200).json(result);
   } catch (error) {
     res.status(400).json((error as Error).message);
   }
