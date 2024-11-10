@@ -5,10 +5,12 @@ import adminController from "./controllers/admin"
 import candidatesController from "./controllers/candidates"
 import votesController from "./controllers/votes"
 import { connectToMongo } from "./config/db"
+import cors from "cors"
 const PORT = process.env.PORT || 3000
 
 const app = exp()
 app.use(exp.json())
+app.use(cors())
 connectToMongo()
 app.use("/api/users",userController)
 app.use("/api/admin",adminController)
