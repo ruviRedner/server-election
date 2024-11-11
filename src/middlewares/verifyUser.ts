@@ -3,7 +3,7 @@ import jwt, { JsonWebTokenError } from "jsonwebtoken";
 
 export default (req:Request,res:Response,next:NextFunction) =>{
     try {
-        const token = req.headers["authorization"] as string
+        const token = req.headers["authorization"] 
         if(!token) {
             res.status(401).json({err:"Token must be provider"})
             return
