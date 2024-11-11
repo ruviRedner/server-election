@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import { LoginDto, RegisterDto } from "../dto/userDto";
-import { userLogin, userRegister } from "../services/user";
+import { getUserProfile, userLogin, userRegister } from "../services/user";
+import { Profile } from "../interfaces/profile";
 
 export const login = async (
-  req: Request<LoginDto>,
+  req: Request<any,any,LoginDto>,
   res: Response
 ) => {
   try {
@@ -15,11 +16,22 @@ export const login = async (
 };
 
 export const register = async (
-  req: Request<RegisterDto>,
+  req: Request<any,any,RegisterDto>,
   res: Response
 ): Promise<void> => {
   try {
     const result = await userRegister(req.body);
+    res.status(201).json(result);
+  } catch (error) {
+    res.status(400).json((error as Error).message);
+  }
+};
+export const getProfile = async (
+  req: Request<any,any,Profile>,
+  res: Response
+): Promise<void> => {
+  try {
+    const result = await getUserProfile(req.body);
     res.status(201).json(result);
   } catch (error) {
     res.status(400).json((error as Error).message);
