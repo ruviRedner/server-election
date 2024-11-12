@@ -12,6 +12,9 @@ export const handelShackConnection = (client:Socket) => {
         console.log("[NEW VOTE] in the system")
         io.emit("voteAppend")
     })
+    client.on("alert",()=>{
+        io.emit("alert")
+    })
     
 }
     
