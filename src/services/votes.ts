@@ -26,3 +26,28 @@ export const handelVote = async (vote:Vote) => {
     }
    
 }
+
+export const handelUnVote = async (vote:Vote) => {
+    try {
+        await Candidate.findByIdAndUpdate(vote.candidateId,{
+            $inc:{
+                votes: -1
+            }
+        })
+        await User.findByIdAndUpdate(vote.userId,{
+            $set:{
+                hasVoted:false,
+                votedFor:null
+            }
+        })
+        return {
+            status:"DONE"
+        }
+    } catch (error) {
+        return {
+            status:"ERROR",
+            err:error as Error
+        }
+    }
+   
+}
