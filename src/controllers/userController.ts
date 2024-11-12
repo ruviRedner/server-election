@@ -8,6 +8,6 @@ router.post("/login",login)
 
 router.post("/register",register)
 
-router.get("/profile",verifyUser,getProfile)
+router.post("/profile",verifyUser,getProfile)
 
 export default router
