@@ -7,10 +7,13 @@ import votesController from "./controllers/votes"
 import { connectToMongo } from "./config/db"
 import cors from "cors"
 import http from "http"
+import {Server} from "socket.io"
 const PORT = process.env.PORT || 3000
 
 const app = exp()
 const httpServer = http.createServer(app)
+export const io = new Server(httpServer)
+
 app.use(exp.json())
 app.use(cors())
 connectToMongo()
@@ -21,7 +24,7 @@ app.use("/api/votes",votesController)
 
 
 
-app.listen(PORT,()=>{
+httpServer.listen(PORT,()=>{
     console.log(`server app and runing in port ${PORT}`);
     
 })
