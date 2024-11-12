@@ -1,6 +1,8 @@
-import {io} from "../app"
+import { Socket } from "socket.io";
 
-io.on("connection",(client)=>{
+
+export const handelShackConnection = (client:Socket) => {
     console.log(`[socket.io]New Connection ${client.id} `);
+}
     
-})
+    
