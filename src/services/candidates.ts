@@ -4,7 +4,7 @@ export const sidInit = async () => {
   try {
     const cands = [
       {
-        name: "John",
+        name: "Johngyyguy",
         image: "https://randomuser.me/api/portraits/med/men/81.jpg",
       },
       {
@@ -52,6 +52,7 @@ export const sidInit = async () => {
       const newCand = new Candidate(cand);
       await newCand.save();
     }
+  
   } catch (error) {
     console.log("Error accorde while creating initial state of candidate",error);
   }
