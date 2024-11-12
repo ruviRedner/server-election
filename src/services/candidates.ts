@@ -23,6 +23,30 @@ export const sidInit = async () => {
         name: "Johnny",
         image: "https://randomuser.me/api/portraits/med/men/6.jpg",
       },
+      {
+        name: "moshe",
+        image: "https://randomuser.me/api/portraits/med/men/90.jpg",
+      },
+      {
+        name: "shlomi",
+        image: "https://randomuser.me/api/portraits/med/men/4.jpg",
+      },
+      {
+        name: "yosi",
+        image: "https://randomuser.me/api/portraits/med/men/89.jpg",
+      },
+      {
+        name: "hanoch",
+        image: "https://randomuser.me/api/portraits/med/men/23.jpg",
+      },
+      {
+        name: "teela",
+        image: "https://randomuser.me/api/portraits/med/men/45.jpg",
+      },
+      {
+        name: "dudi",
+        image: "https://randomuser.me/api/portraits/med/men/56.jpg",
+      }
     ];
     for (const cand of cands) {
       const newCand = new Candidate(cand);
