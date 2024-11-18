@@ -4,7 +4,7 @@ import userController from "./controllers/userController";
 import adminController from "./controllers/admin";
 import candidatesController from "./controllers/candidates";
 import votesController from "./controllers/votes";
-import { connectToMongo } from "./config/db";
+import "./config/db";
 import cors from "cors";
 import http from "http";
 import { Server } from "socket.io";
@@ -23,13 +23,15 @@ io.on("connection", handelShackConnection);
 
 app.use(exp.json());
 app.use(cors());
-connectToMongo();
+
 app.use("/api/users", userController);
 app.use("/api/admin", adminController);
 app.use("/api/candidates", candidatesController);
 app.use("/api/votes", votesController);
 
-app.get("/ping",(req:Request,res:Response)=> {res.status(200).send("pong")})
+app.get("/ping", (req: Request, res: Response) => {
+  res.status(200).send("pong");
+});
 
 httpServer.listen(PORT, () => {
   console.log(`server app and runing in port ${PORT}`);
