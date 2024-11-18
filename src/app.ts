@@ -1,4 +1,4 @@
-import exp from "express";
+import exp, { Request, Response } from "express";
 import "dotenv/config";
 import userController from "./controllers/userController";
 import adminController from "./controllers/admin";
@@ -11,7 +11,7 @@ import { Server } from "socket.io";
 import { handelShackConnection } from "./socket/io";
 const PORT = process.env.PORT || 3000;
 
-const app = exp();
+export const app = exp();
 const httpServer = http.createServer(app);
 export const io = new Server(httpServer, {
   cors: {
@@ -28,6 +28,8 @@ app.use("/api/users", userController);
 app.use("/api/admin", adminController);
 app.use("/api/candidates", candidatesController);
 app.use("/api/votes", votesController);
+
+app.get("/ping",(req:Request,res:Response)=> {res.status(200).send("pong")})
 
 httpServer.listen(PORT, () => {
   console.log(`server app and runing in port ${PORT}`);
